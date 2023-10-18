@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap" rel="stylesheet">
+    <title>Prêt Prédiction API</title>
+  </head>
+
+  <body>
+    <h1>Risque de défaillance de paiement sur un prêt bancaire</h1>
+
+    <div class="image">
+      <img src="{{ url_for('static', filename='img/home_credit_logo.png') }}" alt="logo">
+    </div>
+
+    <div class="formulaire">
+      <h2>ID Client :</h2>
+      <p style="font-size:75%; font-style:italic;">
+        L'identifiant doit être obligatoirement un nombre à 6 chiffres comme par exemple : 205960, 413756, 344067, 106854...
+        <br>
+      </p>
+      <form method="POST" action="/">
+      <input type="number" name="id_client" id="number">
+      <span id="error"></span>
+      <br>
+      <span style="color: red; font-weight: bold;"> {{number}} </span>
+      </form>
+      <p>
+        <br>
+        Le client dont l'identifiant est <span style="color: red; font-weight: bold;">"{{identifiant_text}}"</span> 
+        a obtenu le score de <span style="color: red; font-weight: bold;">{{prediction_text}}%</span>.<br>
+        Il y a un risque de {{prediction_text}}% qu'il ait des difficultés de paiement.<br><br>
+        
+        Le client est donc considéré par <span style="font-style: italic ;">'Prêt à dépenser'</span> 
+        comme <span style="color: red; font-weight: bold;">{{solvabilite_text}}</span> 
+        et décide de lui <span style="color: red; font-weight: bold;">{{decision_text}} son crédit</span>.
+      </p>
+    </div>
+
+  </body>
+</html>
